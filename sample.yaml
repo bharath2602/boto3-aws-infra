@@ -1,0 +1,7 @@
+Resources:
+  - Type: s3
+    Value: True
+    Properties:
+      Name: mybucket-1231235
+
+ 
