@@ -2,6 +2,32 @@ Resources:
   - Type: s3
     Value: True
     Properties:
-      Name: mybucket-1231235
+      Name: by-s3-bucket-1231235
+  - Type: vpc
+    Value: True
+    Properties:
+      Name: myVpc
+      CIDR: 10.0.0.0/16
+      IGW: true
+      Subnets:
+        - Name: publicSub
+          CIDR: 10.0.0.0/24
+          public: true
+        - Name: PrivateSub
+          CIDR: 10.0.1.0/24
+          public: false
+  - Type: ec2
+    Value: True
+    Properties:
+      Name: my-ec2-demo
+      Image: ami-0c02fb55956c7d316
+      Type: t2.micro
+      Subnet_id: vpc.publicSub.id
+      Key: "aws-training-key"
 
- 
+
+
+
+
+
+

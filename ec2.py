@@ -29,7 +29,7 @@ class ec2:
             'DeviceIndex': 0,
             'AssociatePublicIpAddress': True,
             }],
-            KeyName='aws-training-key')
+            KeyName=prop['Key'])
             type.create_tags(Resources=[instances[0].id],Tags=[{"Key": "Name", "Value": prop["Name"]}])
 
             print(Fore.GREEN + "Instance Created successfully ...")
