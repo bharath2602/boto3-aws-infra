@@ -2,7 +2,7 @@ Resources:
   - Type: s3
     Value: True
     Properties:
-      Name: by-s3-bucket-1231235
+      Name: <bucket-name>
   - Type: vpc
     Value: True
     Properties:
@@ -20,14 +20,7 @@ Resources:
     Value: True
     Properties:
       Name: my-ec2-demo
-      Image: ami-0c02fb55956c7d316
+      Image: <ami-id>
       Type: t2.micro
-      Subnet_id: vpc.publicSub.id
-      Key: "aws-training-key"
-
-
-
-
-
-
-
+      Subnet_id: vpc.publicSub.id #refering the subnet id from the vpc
+      Key: <key-name>

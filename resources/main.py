@@ -22,7 +22,7 @@ class Create:
    
 
 #if __name__ == "__main__" :
-with open('sample.yaml', 'r') as f:
+with open('resource.yaml', 'r') as f:
     read_resource = yaml.load(f, Loader=SafeLoader)
 obj_create = Create()
 obj_create.create_resources(read_resource['Resources'])  
