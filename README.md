@@ -1,4 +1,4 @@
-# BOTO#-AWS-INFRA
+# BOTO3-AWS-INFRA
 
 Python based project for provisioning basic aws infrastructure
 
