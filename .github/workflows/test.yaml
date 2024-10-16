@@ -93,7 +93,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: '${{env.SHARED_ACR}}.azurecr.io/pim_enricher:${{ steps.set_image_version.outputs.version }}'
+          image-ref: '${{env.SHARED_ACR}}.azurecr.io/pim_enricher:${{ steps.image_version.outputs.version }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
