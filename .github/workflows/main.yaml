@@ -1,19 +1,11 @@
-name: "Deploy DEV workflow"
-
-permissions:
-  contents: write
-  packages: write
-  id-token: write
+name: "Deploy Release workflow"
 
 on:
-  push:
-    branches-ignore:
-      - main
-    # paths-ignore:
-    #   - ".github/**"
+  release:
+    types: [published]
 
 env:
-  IMAGE_REPO: "devgcshared671"
+  IMAGE_REPO: "gcshared671"
 
 jobs:
   build_publish:
@@ -30,20 +22,23 @@ jobs:
       #     tenant-id: ${{ vars.AZ_TENANT_ID }}
       #     subscription-id: ${{ vars.AZ_SHARED_SUBSCRIPTION_ID }}
 
-      # - name: "Login to dev shared ACR"
+      # - name: "Login to shared ACR"
       #   run: |
       #     echo -e "📡 \033[1mLogging in to dev shared ACR ... \e[0m"
       #     az acr login --name ${IMAGE_REPO}
 
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+
       - name: "Build Docker image"
         id: image_version
         run: |
-          docker build --tag ${IMAGE_REPO}.azurecr.io/pimenricher:tt --file Dockerfile . || exit 1
+          docker build --tag ${IMAGE_REPO}.azurecr.io/pimenricher:${{ steps.get-latest-tag.outputs.tag}} --file Dockerfile . || exit 1
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: '${{ env.IMAGE_REPO }}.azurecr.io/pimenricher:tt'
+          image-ref: '${{ env.IMAGE_REPO }}.azurecr.io/pimenricher:${{ steps.get-latest-tag.outputs.tag}}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -53,4 +48,4 @@ jobs:
       - name: "Push Docker image"
         run: |
           echo run
-          # docker push ${IMAGE_REPO}.azurecr.io/pimenricher:tt
+          docker push ${IMAGE_REPO}.azurecr.io/pimenricher:${{ steps.get-latest-tag.outputs.tag}}
