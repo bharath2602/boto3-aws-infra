@@ -9,8 +9,8 @@ on:
   push:
     branches-ignore:
       - main
-    paths-ignore:
-      - ".github/**"
+    # paths-ignore:
+    #   - ".github/**"
 
 env:
   IMAGE_REPO: "devgcshared671"
