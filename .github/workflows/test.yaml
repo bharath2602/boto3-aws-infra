@@ -8,7 +8,7 @@ permissions:
 on:
   push:
     branches:
-      - !main
+      - '!main'
     paths-ignore:
       - ".github/**"
 
@@ -19,7 +19,6 @@ jobs:
   build_publish:
     name: "Build Docker Image with new Tag"
     runs-on: ubuntu-latest
-    needs: init
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b
@@ -44,7 +43,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: '${{ env.IMAGE_REPO }}.azurecr.io/pimenricher:tt
+          image-ref: '${{ env.IMAGE_REPO }}.azurecr.io/pimenricher:tt'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
