@@ -23,17 +23,17 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b
 
-      - name: "Login to Azure CLI"
-        uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a
-        with:
-          client-id: ${{ vars.SHARED_OWNER_APP_ID }}
-          tenant-id: ${{ vars.AZ_TENANT_ID }}
-          subscription-id: ${{ vars.AZ_SHARED_SUBSCRIPTION_ID }}
+      # - name: "Login to Azure CLI"
+      #   uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a
+      #   with:
+      #     client-id: ${{ vars.SHARED_OWNER_APP_ID }}
+      #     tenant-id: ${{ vars.AZ_TENANT_ID }}
+      #     subscription-id: ${{ vars.AZ_SHARED_SUBSCRIPTION_ID }}
 
-      - name: "Login to dev shared ACR"
-        run: |
-          echo -e "📡 \033[1mLogging in to dev shared ACR ... \e[0m"
-          az acr login --name ${IMAGE_REPO}
+      # - name: "Login to dev shared ACR"
+      #   run: |
+      #     echo -e "📡 \033[1mLogging in to dev shared ACR ... \e[0m"
+      #     az acr login --name ${IMAGE_REPO}
 
       - name: "Build Docker image"
         id: image_version
