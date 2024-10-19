@@ -38,7 +38,7 @@ jobs:
       - name: "Build Docker image"
         id: image_version
         run: |
-          docker build --tag ${IMAGE_REPO}.azurecr.io/pimenricher:${{ github.run_number }}} --file Dockerfile . || exit 1
+          docker build --tag ${IMAGE_REPO}.azurecr.io/pimenricher:${{github.run_id}}-${{ github.run_number }} --file Dockerfile . || exit 1
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
