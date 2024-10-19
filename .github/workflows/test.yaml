@@ -38,12 +38,12 @@ jobs:
       - name: "Build Docker image"
         id: image_version
         run: |
-          docker build --tag ${IMAGE_REPO}.azurecr.io/pimenricher:${{github.run_id }} --file Dockerfile . || exit 1
+          docker build --tag ${IMAGE_REPO}.azurecr.io/pimenricher:${{ git.run_number }}} --file Dockerfile . || exit 1
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: '${{ env.IMAGE_REPO }}.azurecr.io/pimenricher:${{github.run_id }}'
+          image-ref: '${{ env.IMAGE_REPO }}.azurecr.io/pimenricher:${{ git.run_number }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -53,4 +53,4 @@ jobs:
       - name: "Push Docker image"
         run: |
           echo run
-          # docker push ${IMAGE_REPO}.azurecr.io/pimenricher:tt
+          # docker push ${IMAGE_REPO}.azurecr.io/pimenricher:${{ git.run_number }}
