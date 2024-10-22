@@ -2,6 +2,8 @@
 
 Python based project for provisioning basic aws infrastructure
 
+$${\color{red}**Note**: Below are the examples of how the kubernetes secrets should be structured. Please note that all secrets must be encrypted using SOPS, which can be done via this [link](../secrets/README.md).$$
+
 ## Getting started
 1. Clone the repository
 2. Export aws credentials to your terminal
