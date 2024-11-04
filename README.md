@@ -2,8 +2,13 @@
 
 Python based project for provisioning basic aws infrastructure
 
-> [!NOTE]
-> Below are the examples of how the kubernetes secrets should be structured. Please note that all secrets must be encrypted using SOPS, which can be done via this [link](../secrets/README.md).
+- **repoURL**: The source repository where the Helm charts are stored
+  > [!NOTE]
+  > Standard customers cannot modify the `repoURL`. Only premium customers can use custom registries to publish and deploy their own integrations.
+- **chart**: A unique chart name(api-name) used in the configurations
+- **targetRevision**: Defines the specific chart version to deploy.
+- **releaseName**: A unique release name for each version you deploy.
+- **valueFiles**: File paths for values, which should not be altered.
 
 ## Getting started
 1. Clone the repository
