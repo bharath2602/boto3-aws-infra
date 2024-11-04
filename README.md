@@ -3,8 +3,8 @@
 Python based project for provisioning basic aws infrastructure
 
 - **repoURL**: The source repository where the Helm charts are stored
-  > [!NOTE]
-  > Standard customers cannot modify the `repoURL`. Only premium customers can use custom registries to publish and deploy their own integrations.
+> [!NOTE]
+> Standard customers cannot modify the `repoURL`. Only premium customers can use custom registries to publish and deploy their own integrations.  
 - **chart**: A unique chart name(api-name) used in the configurations
 - **targetRevision**: Defines the specific chart version to deploy.
 - **releaseName**: A unique release name for each version you deploy.
